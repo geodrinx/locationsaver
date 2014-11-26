@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/locationsaver" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
