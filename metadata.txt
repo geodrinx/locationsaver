@@ -10,7 +10,7 @@
 name=locationsaver
 qgisMinimumVersion=2.0
 description=locationsaver
-version=0.1
+version=0.2
 author=geodrinx
 email=geodrinx@gmail.com
 

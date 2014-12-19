@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'locationsaver_dialog_base.ui'
 #
-# Created: Wed Nov 26 15:22:24 2014
+# Created: Fri Dec 19 10:41:17 2014
 #      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!

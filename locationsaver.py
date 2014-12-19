@@ -32,6 +32,10 @@ import datetime
 import time
 
 from PyQt4.QtCore import *
+from PyQt4.QtGui import *
+
+from qgis.gui import QgsMessageBar
+
 import qgis
 from qgis.core import *
 
@@ -210,7 +214,10 @@ class locationsaver:
 				   memLay_Line.updateExtents()
 				   memLay_Line.commitChanges()
 				   QgsMapLayerRegistry.instance().addMapLayer(memLay_Line) 
-				   res = memprovider_Line.addAttributes( [ QgsField("IDLocation",  QVariant.String) ] )
+				   res = memprovider_Line.addAttributes( [ QgsField("ID",  QVariant.String), QgsField("Note",  QVariant.String) ] )
+
+				   styledir = QFileInfo(QgsApplication.qgisUserDbFilePath()).path() + "python/plugins/locationsaver/_QML_Styles"
+				   memLay_Line.loadNamedStyle(styledir + '/locationsaver.qml')
 
 
 				adesso = str(datetime.datetime.now())
@@ -243,7 +250,8 @@ class locationsaver:
 
 				IDLocation = ("Location_%s") % (adesso)
 
-				values = [(IDLocation)]
+				Note = IDLocation
+				values = [(IDLocation),(Note)]
 
 				fet.setAttributes(values)
 
@@ -251,3 +259,7 @@ class locationsaver:
 
 				memLay_Line.updateFields()
 				memLay_Line.updateExtents()
+        
+				self.iface.messageBar().pushMessage("Location saved: ",
+                                                IDLocation,
+                                                QgsMessageBar.INFO, 3)        
